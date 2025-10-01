@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center"> Community Policy Classifier</h1>
+  <h1 align="center"> Projeto de NLP: Classificação de Frases</h1>
   <p align="center">Classificação de frases <b>Adequadas</b> vs. <b>Potencialmente Violadoras</b> usando LSTM, GRU e BERT</p>
 
   <!-- Badges principais -->
@@ -11,20 +11,28 @@
   </p>
 </p>
 
+<div align="center">
+
+# Processamento de Linguagem Natural (NLP)
+
+<img src="reports/nlp.jpeg" alt="Logo do Projeto" width="800"/>
+
+</div>
+
 ---
 
 
-# 🧠 Community Policy Classifier
+# Processamento de Linguagem Natural (NLP)
 Classificador de frases **Adequadas vs. Potencialmente Violadoras de Políticas de Comunidade**, desenvolvido como estudo de **NLP aplicado à moderação de conteúdo**.  
-O projeto implementa diferentes modelos de **Deep Learning (LSTM/GRU)** e **Transformers (BERT)**, avaliando desempenho, métricas e interpretabilidade com **LIME e SHAP**.
+O projeto implementa diferentes modelos de **Deep Learning (LSTM)** e **Transformers (BERT)**, avaliando desempenho, métricas e interpretabilidade com **LIME e SHAP**.
 
 ---
 
 ## 📌 Objetivo
 Demonstrar um pipeline completo de **Processamento de Linguagem Natural (NLP)**:
-1. Coleta e construção de dataset fictício e seguro.
+1. Coleta e construção de dataset seguro.
 2. Pré-processamento (tokenização, padding).
-3. Treinamento de modelos avançados (LSTM, GRU, BERT).
+3. Treinamento de modelos avançados (LSTM).
 4. Avaliação com métricas clássicas e avançadas.
 5. Explicabilidade (LIME/SHAP) para interpretação de decisões.
 6. Documentação ética sobre uso responsável.
@@ -33,20 +41,14 @@ Demonstrar um pipeline completo de **Processamento de Linguagem Natural (NLP)**:
 
 ## 📂 Estrutura do Projeto
 ```
-NLP_CommunityPolicyClassifier/
-├── data/ # Dados fictícios (CSV)
-├── notebooks/ # Jupyter Notebooks com experimentos
+NLP_Project/
+├── notebooks/                    # Jupyter Notebooks com experimentos
 │ ├── lstm_gru_classifier.ipynb
 │ └── explainability.ipynb
-├── models/ # Modelos treinados (.h5, .pt)
-├── reports/ # Gráficos, métricas e explicações
-├── src/ # Código modularizado
-│ ├── preprocess.py
-│ ├── train.py
-│ ├── evaluate.py
-│ └── explain.py
-├── README.md # Este arquivo
-└── ETHICS.md # Documento de ética e boas práticas
+├── models/                      # Modelos treinados (.h5, .pt)
+├── reports/                     # Gráficos, métricas e explicações
+├── README.md                    # Este arquivo
+└── ETHICS.md                    # Documento de ética e boas práticas
 ```
 
 ---
@@ -54,45 +56,65 @@ NLP_CommunityPolicyClassifier/
 ## ⚙️ Tecnologias Utilizadas
 - **Linguagem:** Python 3.12  
 - **Bibliotecas principais:**
-  - `TensorFlow / Keras` (LSTM, GRU)
-  - `scikit-learn` (métricas)
+  - `TensorFlow / Keras` (LSTM)
+  - `scikit-learn` (TF-IDF, Logistic Regression, métricas)
   - `LIME` e `SHAP` (explicabilidade)
   - `Matplotlib / Seaborn` (visualizações)
 
 ---
 
-## 🔎 Dataset Fictício
-Criado manualmente para fins **didáticos**.  
-Classes:
-- `0 = Adequado`
-- `1 = Potencial violador`
-
-Exemplo:
-| Frase | Label |
-|-------|-------|
-| "Seu trabalho ficou excelente, parabéns!" | 0 |
-| "Você só fala besteira, cala a boca" | 1 |
+## 📊 Dataset
+- **Tamanho**: 1.020 frases  
+- **Colunas**:
+  - `frase` → texto do comentário
+  - `label` → 0 (Adequado), 1 (Violador)
+- **Balanceamento**: classes equilibradas ✅
+- **Exemplo**:
+  | frase | label |
+  |-------|-------|
+  | "Seu trabalho ficou excelente, parabéns!" | 0 |
+  | "Você só fala besteira, cala a boca" | 1 |
 
 ---
 
-## 📊 Modelos Implementados
+## ⚙️ Pipeline do Projeto
 
-### 🔹 LSTM / GRU (Keras)
-- **Embedding + LSTM/GRU + Dense**  
-- Métricas: Accuracy, Precision, Recall, F1, ROC-AUC  
-- Explicabilidade: **LIME** (local) e **SHAP** (global)
+1. **Exploração de Dados (EDA)**  
+   - Distribuição de classes  
+   - WordCloud das palavras mais comuns  
 
+2. **Pré-processamento**  
+   - Tokenização  
+   - Padronização de sequências  
+   - Preparação para modelos clássicos e redes neurais  
+
+3. **Modelagem**  
+   - **Baseline**: Logistic Regression + TF-IDF  
+   - **Deep Learning**: LSTM com embeddings  
+   - Comparação entre modelos  
+
+4. **Avaliação**  
+   - Métricas: Accuracy, Precision, Recall, F1-score, ROC-AUC  
+   - Visualizações: matriz de confusão, curvas ROC e Precision-Recall  
+
+5. **Explicabilidade**  
+   - **LIME**: destaca palavras-chave que impactam a predição  
+   - **SHAP**: importância global das features  
+
+6. **Pipeline de Inferência**  
+   - Função para carregar modelo treinado e realizar predição em novas frases  
 
 ---
 
 ## 📈 Resultados
 
-| Modelo   | Accuracy | Precision | Recall | F1 | AUC  | Tempo de Treino |
-|----------|----------|-----------|--------|----|------|-----------------|
-| **LSTM** | 0.90     | 0.91      | 0.89   | 0.90 | 0.92 | ~12s |
-| **GRU**  | 0.88     | 0.89      | 0.87   | 0.88 | 0.91 | ~8s  |
+|        Modelo                | Accuracy | F1-Score | ROC-AUC |
+|------------------------------|----------|----------|---------|
+| Logistic Regression (TF-IDF) |   0.86   |   0.85   |   0.90  |
+| LSTM (Embedding)             |   0.89   |   0.88   |   0.92  |
 
-*(valores ilustrativos, ajustar após rodar no notebook)*
+- O modelo **LSTM** apresentou melhor desempenho.  
+- Explicabilidade confirmou que termos ofensivos foram corretamente identificados como preditores de classe `1`.
 
 ---
 
@@ -145,25 +167,20 @@ git clone https://github.com/seu-usuario/NLP_CommunityPolicyClassifier.git
 cd NLP_CommunityPolicyClassifier
 ```
 
-# Criar ambiente virtual
+## Criar ambiente virtual
 ```
 python -m venv .venv
 source .venv/bin/activate  # Linux/Mac
 .venv\Scripts\activate     # Windows
 ```
 
-# Instalar dependências
+## Instalar dependências
 ```
 pip install -r requirements.txt
 ```
 
-# Rodar notebooks
-```
-jupyter notebook notebooks/lstm_gru_classifier.ipynb
-```
 
-
-Próximos Passos
+## Próximos Passos
 
 - Testar outros modelos pré-treinados (RoBERTa, DistilBERT).
 
