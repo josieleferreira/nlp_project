@@ -13,8 +13,6 @@
 
 <div align="center">
 
-# Processamento de Linguagem Natural (NLP)
-
 <img src="reports/nlp.jpeg" alt="Logo do Projeto" width="800"/>
 
 </div>
