@@ -1,6 +1,6 @@
 <p align="center">
   <h1 align="center"> Projeto de NLP: Classificação de Frases</h1>
-  <p align="center">Classificação de frases <b>Adequadas</b> vs. <b>Potencialmente Violadoras</b> usando Logistic Regression (TF-IDF) e LSTM </p>
+  <p align="center">Classificação de frases <b>Adequadas</b> vs. <b>Potencialmente Violadoras</b> usando Logistic Regression (TF-IDF) e LSTM. </p>
 
   <!-- Badges principais -->
   <p align="center">
@@ -159,7 +159,7 @@ Abaixo, um exemplo de explicação para a frase *"Adoro participar das discussõ
 
 ## 🚀 Como Rodar
 
-# Clonar repositório
+## Clonar repositório
 ```
 git clone https://github.com/seu-usuario/NLP_CommunityPolicyClassifier.git
 cd NLP_CommunityPolicyClassifier
