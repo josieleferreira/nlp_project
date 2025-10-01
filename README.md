@@ -1,6 +1,6 @@
 <p align="center">
   <h1 align="center"> Projeto de NLP: Classificação de Frases</h1>
-  <p align="center">Classificação de frases <b>Adequadas</b> vs. <b>Potencialmente Violadoras</b> usando LSTM, GRU e BERT</p>
+  <p align="center">Classificação de frases <b>Adequadas</b> vs. <b>Potencialmente Violadoras</b> usando Logistic Regression (TF-IDF) e LSTM </p>
 
   <!-- Badges principais -->
   <p align="center">
@@ -22,7 +22,7 @@
 
 # Processamento de Linguagem Natural (NLP)
 Classificador de frases **Adequadas vs. Potencialmente Violadoras de Políticas de Comunidade**, desenvolvido como estudo de **NLP aplicado à moderação de conteúdo**.  
-O projeto implementa diferentes modelos de **Deep Learning (LSTM)** e **Transformers (BERT)**, avaliando desempenho, métricas e interpretabilidade com **LIME e SHAP**.
+O projeto implementa modelo de **Deep Learning (LSTM)**, avaliando desempenho, métricas e interpretabilidade com **LIME e SHAP**.
 
 ---
 
